@@ -1,0 +1,14 @@
+body {
+            background-image: 
+                radial-gradient(ellipse at top left, rgba(13,13,55,0.6) 0%, transparent 70%),
+                radial-gradient(ellipse at bottom right, rgba(55,13,55,0.6) 0%, transparent 70%),
+                linear-gradient(135deg, rgba(30,30,80,0.4), rgba(80,30,80,0.4));
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+        }
+}

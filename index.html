@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>LMA Diagnostic AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-5xl">
+        <div class="bg-[#2a3b4c]/70 rounded-3xl shadow-2xl p-12 glass-morphism relative overflow-hidden">
+            <div class="text-center mb-12">
+                <i class="fas fa-microscope text-6xl text-pink-500 mb-4 block"></i>
+                <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 mb-4">
+                    LMA Diagnostic AI
+                </h1>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Image Upload Section -->
+                <div class="flex flex-col items-center">
+                    <div class="border-2 border-dashed border-pink-300 rounded-lg p-8 text-center w-full">
+                        <input type="file" 
+                               id="imageUpload" 
+                               accept="image/*" 
+                               class="hidden">
+                        <label for="imageUpload" 
+                               class="cursor-pointer flex flex-col items-center">
+                            <i class="fas fa-cloud-upload-alt text-6xl text-purple-500 mb-4"></i>
+                            <span class="text-white text-xl">Télécharger Image Cellulaire</span>
+                        </label>
+                        <img id="preview" class="mt-4 max-w-full rounded-lg shadow-lg" style="display:none;">
+                    </div>
+                </div>
+
+                <!-- Advanced Parameters Section -->
+                <div class="flex flex-col items-center">
+                    <div class="w-full">
+                        <label class="block mb-4 text-xl font-semibold text-pink-300 text-center">Configuration Modèle</label>
+                        <select id="advancedMenu" 
+                                class="w-full p-3 bg-[#3a4b5c] rounded-lg text-white mb-6">
+                            <option value="0">Mode Simple</option>
+                            <option value="1">1 Modèle</option>
+                            <option value="2">2 Modèles</option>
+                            <option value="3">3 Modèles</option>
+                            <option value="4">4 Modèles (Complet)</option>
+                        </select>
+
+                        <div id="modelSelection" class="grid grid-cols-2 gap-4" style="display:none;">
+                            <label class="flex items-center bg-[#3a4b5c] p-3 rounded hover:bg-purple-800 transition">
+                                <input type="checkbox" name="model" value="rf" class="mr-2"> 
+                                <span>Random Forest</span>
+                            </label>
+                            <label class="flex items-center bg-[#3a4b5c] p-3 rounded hover:bg-purple-800 transition">
+                                <input type="checkbox" name="model" value="svm" class="mr-2"> 
+                                <span>SVM</span>
+                            </label>
+                            <label class="flex items-center bg-[#3a4b5c] p-3 rounded hover:bg-purple-800 transition">
+                                <input type="checkbox" name="model" value="etc" class="mr-2"> 
+                                <span>Extra Trees</span>
+                            </label>
+                            <label class="flex items-center bg-[#3a4b5c] p-3 rounded hover:bg-purple-800 transition">
+                                <input type="checkbox" name="model" value="lr" class="mr-2"> 
+                                <span>Logistic Regression</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-12 py-4 rounded-full hover:scale-105 transition transform text-xl">
+                    <i class="fas fa-brain mr-4"></i> Analyse Diagnostic
+                </button>
+            </div>
+
+            <div id="result" class="mt-12 text-center"></div>
+        </div>
+    </div>
+
+    <script src="js/components/ImageUploader.js"></script>
+    <script src="js/components/ModelConfigurator.js"></script>
+    <script src="js/components/ResultDisplay.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
