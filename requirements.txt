@@ -1,0 +1,15 @@
+typer
+loguru
+tqdm
+numpy
+pandas
+scikit-learn
+opencv-python
+scipy
+scikit-image
+matplotlib
+flask
+flask-cors
+joblib
+werkzeug
+pytest
