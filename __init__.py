@@ -1,5 +1,5 @@
 from core.dependency_manager import DependencyManager
-from app import LMADiagnosticApp
+from core.app import LMADiagnosticApp
 
 def create_app(model_choice: int = 4):
     """
