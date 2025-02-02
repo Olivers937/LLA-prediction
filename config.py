@@ -7,14 +7,15 @@ from typing import Tuple, Dict
 class Config:
     """Configuration pour la détection de la LLA"""
     current_file = Path(__file__)
-    dataset_dir: Path = current_file.parent.parent / "dataset"
-    data_dir: Path = dataset_dir /"Blood cell Cancer [ALL]"
-    benign_dir: Path = data_dir / "Benign"
-    malignant_early_pre_b_dir = data_dir / "[Malignant] early Pre-B"
-    malignant_pre_b_dir = data_dir / "[Malignant] Pre-B"
-    malignant_pro_b_dir = data_dir / "[Malignant] Pro-B"
-    blood_cell_processed_data = dataset_dir / "processed_data" / "blood_cell_cancer.csv"
-    c_nmc_processed_data = dataset_dir/ "processed_data" / "c_nmc_leukemia.csv"
+    #dataset_dir: Path = current_file.parent.parent / "dataset"
+    dataset_dir: Path = "./images"
+    data_dir: Path = dataset_dir + "/Blood cell Cancer [ALL]"
+    benign_dir: Path = data_dir + "/Benign"
+    malignant_early_pre_b_dir = data_dir + "/[Malignant] early Pre-B"
+    malignant_pre_b_dir = data_dir + "/[Malignant] Pre-B"
+    malignant_pro_b_dir = data_dir + "/[Malignant] Pro-B"
+    blood_cell_processed_data = dataset_dir + "/processed_data" + "/blood_cell_cancer.csv"
+    c_nmc_processed_data = dataset_dir + "/processed_data" + "/c_nmc_leukemia.csv"
     image_size: Tuple[int, int] = (128, 128)
     test_size: float = 0.2
     random_state: int = 42

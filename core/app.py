@@ -1,4 +1,6 @@
 import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import joblib
 import numpy as np
 import cv2
@@ -11,7 +13,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 
 from config import Config as config
-from features import extract_features
+from backend.features_extractor import extract_features
 from models.base_model_wrapper import BaseModelWrapper
 
 class LMADiagnosticApp:
@@ -49,7 +51,8 @@ class LMADiagnosticApp:
         }
         
         for model_class in selected_models:
-            model = model_class(random_state=config.random_state, probability=True)
+            #model = model_class(random_state=config.random_state, probability=True)
+            model = model_class(random_state=config.random_state)
             model_wrapper = BaseModelWrapper(
                 model, 
                 model_params[model_class], 
@@ -72,6 +75,9 @@ class LMADiagnosticApp:
         # Read image
         image = cv2.imread(image_path)
         
+        if not os.path.exists(image_path):
+	        raise FileNotFoundError(f"L'image {image_path} n'existe pas")
+        
         # Resize image to standard size
         image = cv2.resize(image, config.image_size)
         
@@ -85,7 +91,7 @@ class LMADiagnosticApp:
             save (bool): Whether to save trained models
         """
         # Load dataset
-        from EDA.datamanagement import load_dataset
+        from utils.data_loader import load_dataset
         
         malign_dir = [
             config.malignant_pre_b_dir.absolute(), 
@@ -194,5 +200,5 @@ def run_diagnostic(image_path: str, model_choice: int = 4):
 
 if __name__ == "__main__":
     # Example usage
-    result = run_diagnostic("path/to/your/image.jpg")
+    result = run_diagnostic("./test.jpeg")
     print(result)
